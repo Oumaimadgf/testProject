@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+    <div class="container pt-4">
+
+
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-outline card-success">
+                        <div class="card-header">
+                            <br>
+                            <div class="card-body pad">
+                                {#  <div class="form-group" style="width: 60% ; margin-left:20% ">#}
+                                {# this form theme will be applied only to the form of this template #}
+                                {% form_theme format 'bootstrap_4_layout.html.twig' %}
+                                {{ form_start(format) }}
+
+
+                                <div class="form-group">
+
+                                    {{ form_widget(format) }}
+                                </div>
+
+                                <div class="form-group" style="margin-top: 20px">
+                                    <button class="btn btn-outline-danger">Editer</button>
+                                </div>
+                                {{ form_errors(format) }}
+                                {{ form_end(format) }}
+                                {#  </div>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

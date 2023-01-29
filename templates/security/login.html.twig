@@ -1,0 +1,63 @@
+<html>
+<head>
+
+    <link href="{{ absolute_url(asset('login/all.min.css')) }}" rel="stylesheet"/>
+    <link href="{{ absolute_url(asset('login/bootstrap.min.css')) }}" rel="stylesheet"/>
+</head>
+<style>
+   .bg {background-image:url("bng.png");}
+</style>
+<body class = "bg">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-thumbnail"
+                             style=" border-radius: 50%; height: 40%;width:40% " alt="avatar">
+                    </h5>
+
+                    {% if error %}
+                        <span class="error" style="color: red">{{ error.messagekey }}</span>
+                    {% endif %}
+                    <form action="{{ path('login') }}" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="Username">
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control"  name="_password" placeholder="Password">
+                            <label for="inputSMEx">Password</label>
+                        </div>
+
+                        <div class="mb-3">
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-danger mt-2 btn-login text-uppercase fw-bold" style="width: 60%;
+                            left: 20% ; right:20%; position: absolute" type="submit">Sign in</button>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="d-grid mt-4 mb-2">
+
+                            <p>Don't have account? Contact your manager for access</p>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+<script src="{{ absolute_url(asset('login/bootstrap.min.js')) }}" ></script>
+
+</html>
+
+

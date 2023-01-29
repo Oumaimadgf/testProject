@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container pt-4 ">
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form)}}
+    <div class="row">
+        <div class="form-group col-md-2">{{ form_row(form.title) }}</div>
+        <div class="form-group col-md-2">{{ form_row(form.status) }}</div>
+        <div class="form-group col-md-6">{{ form_row(form.filename) }}</div>
+
+        <div class="form-group col-md-2"> <button class="btn" style="background-color: #2c3034"><i class="fa fa-filter" style="color: white"aria-hidden="true"></i></button></div>
+         </div>
+
+
+    </div>
+    {{ form_end(form)}}
+    <div class="container mt-5 mb-3 ">
+        <div class="row">
+            {% for projects in projects %}
+            <div class="col-md-4">
+                <div class="card mb-3" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ asset('project.png') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ projects.title }}</h5>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                       <a href="{{ path('edit_project',{'id':projects.id}) }}"
+                           type="button" class="btn btn-outline-danger mt-5">
+                           <i class="fas fa-suitcase"></i> Edit Project</a>
+
+                        {% endif %}
+                    </div>
+
+                    <div class="card-footer">
+                        <p class="card-text text-right">{{ projects.number }} Tasks</p>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(projects) }}
+        </div>
+    </div>
+
+
+
+
+</div>
+{% endblock %}
